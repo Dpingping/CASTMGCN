@@ -1,0 +1,15 @@
+Baselines/
+upload.sh
+.venv/
+code
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.h5
+*.npy
+*.pkl
+*.pth
+*.pt
+*.log
+.DS_Store

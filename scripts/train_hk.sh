@@ -1,0 +1,12 @@
+python ../main/train_hk.py \
+  --device cuda:0 \
+  --data ../../data/HK/ \
+  --adjdata ./../data/adj_matrices/adj_matrix_hk.pkl \
+  --seq_length 12 \
+  --in_dim 2 \
+  --num_nodes 617 \
+  --batch_size 64 \
+  --epochs 100 \
+  --learning_rate 0.001 \
+  --dropout 0.3 \
+  --save save/HK/trained_model/  /
