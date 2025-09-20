@@ -1,0 +1,12 @@
+python ../main/train_METR.py \
+  --device cuda:1 \
+  --data ../../data/METR-LA/ \
+  --adjdata ./../data/adj_matrices/adj_matrix_la.pkl \
+  --seq_length 12 \
+  --in_dim 2 \
+  --num_nodes 207 \
+  --batch_size 64 \
+  --epochs 100 \
+  --learning_rate 0.001 \
+  --dropout 0.3 \
+  --save save/METR/trained_model  /
