@@ -68,7 +68,7 @@ pip install -r requirements.txt
 ## Datasets
 Place the downloaded datasets in the corresponding directory under 'data/HK/ or data/METR-LA/', adjacency matrix in 'data/adj_matrices/'.
 
-- HK dataset: We provide the processed dataset, and just download it at https://drive.google.com/drive/folders/12vlx7OZM6pU19MPO-5tOVgcql3_BzajA?usp=sharing.
+- HK dataset: We collect and preprocess the dataset from [DATA.GOV.HK](https://data.gov.hk/), the processed version can be downloaded at  https://drive.google.com/drive/folders/12vlx7OZM6pU19MPO-5tOVgcql3_BzajA?usp=sharing.
 
 
 - METR-LA dataset: We use the dataset provided from [Yaguang Li, Rose Yu, Cyrus Shahabi, Yan Liu, Diffusion Convolutional Recurrent Neural Network: Data-Driven Traffic Forecasting, ICLR 2018](https://arxiv.org/abs/1707.01926), are available at https://drive.google.com/drive/folders/10FOTa6HXPqX8Pf5WRoRwcFnW9BrNZEIX. 
