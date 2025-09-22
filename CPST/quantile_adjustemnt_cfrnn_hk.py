@@ -14,7 +14,6 @@ parser.add_argument('--adjtype', type=list,
                     default=['normlap', 'doubletransition', 'doubletransition'],
                     help='list of adj type')
 parser.add_argument('--supports_list', type=list, default=[4, 6, 6, 4])
-
 parser.add_argument('--fusion', default='weightsum', help='fusion methods[sum,weightsum,max,mean,average]')
 parser.add_argument('--gcn_bool', default=True, action='store_true', help='whether to add graph convolution layer')
 parser.add_argument('--aptonly', action='store_true', help='whether only adaptive adj')
