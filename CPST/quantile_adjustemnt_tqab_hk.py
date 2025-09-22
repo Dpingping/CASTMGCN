@@ -4,15 +4,11 @@ from model_hk import *
 import numpy as np
 import torch
 import tqa.tqab_hk as tqa
-import os
-from datetime import datetime, timedelta
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--device', type=str, default='cuda:0', help='')
-# parser.add_argument('--data',type=str,default='data/HK/',help='data path')
 parser.add_argument('--data', type=str, default='../data/HK/', help='data path')
 parser.add_argument('--adjdata', type=str, default='../data/adj_matrices/adj_matrix_hk.pkl', help='adj data path')
-# parser.add_argument('--adjdata', type=str, default='data/sensor_graph/LA/merged_la.pkl', help='adj data path')
 parser.add_argument('--adjtype', type=list,
                     default=['normlap', 'doubletransition', 'doubletransition'],
                     help='list of adj type')

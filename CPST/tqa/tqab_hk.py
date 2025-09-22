@@ -219,44 +219,16 @@ class TQA_B(_PI_Constructor):
         with open(adj_path_la, 'rb') as f:
             adj_data = pickle.load(f)[0]
             adj_data = torch.tensor(adj_data)
-            # print('adj_data shape is ', adj_data.shape)
 
-        # Node processing process uses torch.no_grad()
         with torch.no_grad():
             for i in range(N):  # Process all nodes
                 print('{}, predy shape is {},test_y shape is {}'.format(i, predy.shape, test_y.shape))
-                # print('np.nonzero(adj_data[i]) is ', np.nonzero(adj_data[i]))
                 neighbors = torch.nonzero(adj_data[i], as_tuple=False).squeeze(1).tolist()
-
-                # Modify neighbor node judgment logic
-                # if np.nonzero(adj_data[i]).size(0) == 0 and np.nonzero(adj_data[i]).size(1) == 1:
-                #     neighbors = []
-                # else:
-                #     neighbors = np.nonzero(adj_data[i])[0]
                 print('neighbors is ', neighbors)
-
                 predy_new = predy[:, i, :].unsqueeze(-1)
                 test_y_new = test_y[:, i, :].unsqueeze(-1)
                 calibration_preds_point = self.calibration_preds[:, i, :].unsqueeze(-1).to(device)
                 calibration_truths_point = self.calibration_truths[:, i, :].unsqueeze(-1).to(device)
-
-
-                # if len(neighbors) > 0:
-                #     neighbor_errors = []
-                #     for j in neighbors:
-                #         neighbor_pred = self.calibration_preds[:, j, :].unsqueeze(-1).to(device)
-                #         neighbor_true = self.calibration_truths[:, j, :].unsqueeze(-1).to(device)
-                #         error = (neighbor_pred - neighbor_true).abs()
-                #         neighbor_errors.append(error)
-                #
-                #     neighbor_errors = torch.stack(neighbor_errors, dim=0)
-                #     mean_neighbor_errors = neighbor_errors.mean(dim=0)
-                #     calibration_scores = (w_1 * (calibration_preds_point - calibration_truths_point).abs() +
-                #                           w_2 * mean_neighbor_errors).sort(0)[0]
-                # else:
-                #     calibration_scores = (calibration_preds_point - calibration_truths_point).abs().sort(0)[0]
-
-
 
                 # # Modify neighbor node processing logic to be consistent with reference
                 adj_calibration_preds_point = 0
@@ -268,7 +240,6 @@ class TQA_B(_PI_Constructor):
                 calibration_scores = (w_1 * (calibration_preds_point - calibration_truths_point) +
                                       w_2 * (adj_calibration_preds_point - adj_calibration_truths_point)).abs().sort(0)[
                     0]
-
 
                 ret = torch.zeros(B, 2, L, device=device)
                 qs = torch.zeros(B, L, device=device)
@@ -300,16 +271,6 @@ class TQA_B(_PI_Constructor):
                 all_pi.append(ret)
                 all_predy.append(predy_new)
                 all_labelu.append(test_y_new)
-
-                # Add code to save intermediate results (optional)
-                # data = {
-                #     'yhat': predy_new.cpu().detach(),
-                #     'pi': ret.cpu().detach(),
-                #     'label_y': test_y_new.cpu().detach()
-                # }
-                # file_path = f'results/LA/tqab_90_{i}.pkl'
-                # with open(file_path, 'wb') as f:
-                #     pickle.dump(data, f)
 
         all_pred = torch.cat(all_predy, dim=0)
         all_ret = torch.cat(all_pi, dim=0)

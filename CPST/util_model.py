@@ -228,30 +228,6 @@ def load_adj(pkl_filename, adjtype):
 
     return adj_list
 
-
-# def load_dataset(dataset_dir, batch_size, valid_batch_size=None, test_batch_size=None):
-#     data = {}
-#     for category in ['train', 'val', 'test']:
-#         cat_data = np.load(os.path.join(dataset_dir, category + '.npz'))
-#
-#         data['x_' + category] = cat_data['x']
-#         data['y_' + category] = cat_data['y']
-#         # with h5py.File(os.path.join(dataset_dir, category + '.h5'), 'r') as cat_data:
-#         #     data['x_' + category] = cat_data['x'][:]
-#         #     data['y_' + category] = cat_data['y'][:]
-#     scaler = StandardScaler(mean=data['x_train'][..., 0].mean(), std=data['x_train'][..., 0].std())
-#
-#     # Normalize using train mean and std
-#
-#     for category in ['train', 'val', 'test']:
-#         data['x_' + category][..., 0] = scaler.transform(data['x_' + category][..., 0])
-#     data['train_loader'] = DataLoader(data['x_train'], data['y_train'], batch_size)
-#     data['val_loader'] = DataLoader(data['x_val'], data['y_val'], valid_batch_size)
-#     data['test_loader'] = DataLoader(data['x_test'], data['y_test'], test_batch_size)
-#     data['scaler'] = scaler
-#     return data
-
-
 def load_dataset(dataset_dir, batch_size, valid_batch_size=None, test_batch_size=None):
     data = {}
     for category in ['train', 'val', 'test']:
@@ -259,9 +235,7 @@ def load_dataset(dataset_dir, batch_size, valid_batch_size=None, test_batch_size
 
         data['x_' + category] = cat_data['x']
         data['y_' + category] = cat_data['y']
-        # with h5py.File(os.path.join(dataset_dir, category + '.h5'), 'r') as cat_data:
-        #     data['x_' + category] = cat_data['x'][:]
-        #     data['y_' + category] = cat_data['y'][:]
+
     scaler = StandardScaler(mean=data['x_train'][..., 0].mean(), std=data['x_train'][..., 0].std())
 
     # Normalize using train mean and std

@@ -148,14 +148,10 @@ class TQA_B(_PI_Constructor):
                             b, t])  # calibration_scores[:, t, 0] calibration score for all samples at time step t, qs[b, t] adjusted quantile, resulting quantile_value
                         ret[b, 0, t] = predy_new[b, t, 0] - w
                         ret[b, 1, t] = predy_new[b, t, 0] + w
-                    # update the residuals etc
-                    # print('*' * 100)
-                    # print('self._update_cal_loc', self._update_cal_loc)
 
                     calibration_preds_point[self._update_cal_loc] = predy_new[b]  # Update residuals
                     calibration_truths_point[self._update_cal_loc] = test_y_new[b]  # Update residuals
                     self._update_cal_loc = (self._update_cal_loc + 1) % len(calibration_preds_point)
-                    # print('self._update_cal_loc', self._update_cal_loc)
             else:
                 qs = torch.zeros(B, L, device=device) # 7067 12
                 for b in range(B):
