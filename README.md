@@ -35,7 +35,7 @@ Below is the BibTex for citing this snapshot of the repository.
   publisher =     {INFORMS Journal on Computing},
   title =         {Causally-Aware Spatio-Temporal Multi-Graph Convolution Network for Accurate and Reliable Traffic Prediction},
   year =          {2025},
-  doi =           {10.1287/ijoc.2024.0891},
+  doi =           {10.1287/ijoc.2024.0891.cd},
   url =           {https://github.com/INFORMSJoC/2024.0891},
   note =          {Available for download at https://github.com/INFORMSJoC/2024.0891},
 }  
