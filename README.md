@@ -31,7 +31,7 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ```
 @misc{Dong2025,
-  author =        {Dong, Pingping and Wang, Xiao-Lin and Bose, Indranil and Ng, Kam K.H. ahd Zhang, Xiaoning and Zhang, Xiaoge},
+  author =        {Dong, Pingping and Wang, Xiao-Lin and Bose, Indranil and Ng, Kam K.H. and Zhang, Xiaoning and Zhang, Xiaoge},
   publisher =     {INFORMS Journal on Computing},
   title =         {Causally-Aware Spatio-Temporal Multi-Graph Convolution Network for Accurate and Reliable Traffic Prediction},
   year =          {2025},
